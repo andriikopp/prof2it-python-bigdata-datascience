@@ -300,6 +300,10 @@ def get_10_most_popular_titles_by_each_genre(spark):
 
 
 def main():
+    """Extracts data from IMDB Datasets from the `imdb-data` folder, 
+    transforms data using declared functions, 
+    and loads results to .csv files in the `output/` folder."""
+    
     # Setup
     data_sets = {
         "name_basics": "name.basics.tsv.gz",
