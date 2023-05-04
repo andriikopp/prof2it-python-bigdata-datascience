@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>imdb_spark API documentation</title>
+<meta name="description" content="IMDB Spark Project …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>imdb_spark</code></h1>
+</header>
+<section id="section-intro">
+<p>IMDB Spark Project</p>
+<p>This script allows the user to load IMDB Datasets, print top 10 rows
+from each dataset, execute necessary transformations implemented by
+separate functions, and store obtained results to <code>.csv</code> files (one per
+transformation) to the <code>output</code> folder.</p>
+<p>This tool accepts <code>.gz</code> files of IMDB Datasets (<a href="https://datasets.imdbws.com/">https://datasets.imdbws.com/</a>)
+located in the local folder <code>imdb-data/</code>.</p>
+<p>This script requires that <code>pyspark</code> package is installed within the Python
+environment you are running this script in (with JDK and PATH variables set
+in your environment).</p>
+<p>This file is possible to be used as a module and it contains the following
+functions:</p>
+<pre><code>* get_ukrainian_series_movies_titles - returns all titles of series/movies etc. 
+    that are available in Ukrainian
+* get_people_born_in_19th_century - returns the list of people’s names, 
+    who were born in the 19th century
+* get_movies_last_more_2_hours - returns titles of all movies that last more than 2 hours
+* get_people_and_characters_played - returns  names of people, corresponding movies/series 
+    and characters they played in those films
+* get_top_100_adult_movies_per_region - returns information about how many 
+    adult movies/series etc. there are per region
+* get_top_50_tvseries_by_episodes - returns information about how many episodes in each TV Series
+* get_10_most_popular_titles_by_each_decade - returns 10 titles of the most popular 
+    movies/series etc. by each decade
+* get_10_most_popular_titles_by_each_genre - returns 10 titles of the most popular 
+    movies/series etc. by each genre
+* main - the main function of the script
+</code></pre>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;IMDB Spark Project
+
+This script allows the user to load IMDB Datasets, print top 10 rows
+from each dataset, execute necessary transformations implemented by
+separate functions, and store obtained results to `.csv` files (one per
+transformation) to the `output` folder.
+
+This tool accepts `.gz` files of IMDB Datasets (https://datasets.imdbws.com/)
+located in the local folder `imdb-data/`.
+
+This script requires that `pyspark` package is installed within the Python
+environment you are running this script in (with JDK and PATH variables set
+in your environment).
+
+This file is possible to be used as a module and it contains the following
+functions:
+
+    * get_ukrainian_series_movies_titles - returns all titles of series/movies etc. 
+        that are available in Ukrainian
+    * get_people_born_in_19th_century - returns the list of people’s names, 
+        who were born in the 19th century
+    * get_movies_last_more_2_hours - returns titles of all movies that last more than 2 hours
+    * get_people_and_characters_played - returns  names of people, corresponding movies/series 
+        and characters they played in those films
+    * get_top_100_adult_movies_per_region - returns information about how many 
+        adult movies/series etc. there are per region
+    * get_top_50_tvseries_by_episodes - returns information about how many episodes in each TV Series
+    * get_10_most_popular_titles_by_each_decade - returns 10 titles of the most popular 
+        movies/series etc. by each decade
+    * get_10_most_popular_titles_by_each_genre - returns 10 titles of the most popular 
+        movies/series etc. by each genre
+    * main - the main function of the script
+&#34;&#34;&#34;
+
+from pyspark.sql import SparkSession
+
+
+def get_ukrainian_series_movies_titles(spark):
+    &#34;&#34;&#34;Gets all titles of series/movies etc. that are available in Ukrainian.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            DISTINCT title
+                        FROM 
+                            title_akas
+                        WHERE 
+                            region = &#39;UA&#39;
+                        &#34;&#34;&#34;)
+
+
+def get_people_born_in_19th_century(spark):
+    &#34;&#34;&#34;Gets the list of people’s names, who were born in the 19th century.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            primaryName
+                        FROM 
+                            name_basics
+                        WHERE 
+                            birthYear &gt;= 1801 AND birthYear &lt;= 1900
+                        &#34;&#34;&#34;)
+
+
+def get_movies_last_more_2_hours(spark):
+    &#34;&#34;&#34;Gets titles of all movies that last more than 2 hours.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            primaryTitle
+                        FROM 
+                            title_basics
+                        WHERE 
+                            titleType = &#39;movie&#39; AND runtimeMinutes &gt; 120
+                        &#34;&#34;&#34;)
+
+
+def get_people_and_characters_played(spark):
+    &#34;&#34;&#34;Gets names of people, corresponding movies/series and characters they played in those films.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            name_basics.primaryName, 
+                            title_basics.primaryTitle,
+                            title_principals.characters
+                        FROM 
+                            (title_basics INNER JOIN title_principals 
+                                ON title_basics.tconst = title_principals.tconst) 
+                            INNER JOIN name_basics 
+                                ON name_basics.nconst = title_principals.nconst
+                        WHERE 
+                            title_principals.category IN (&#39;actor&#39;, &#39;actress&#39;) 
+                                AND title_principals.characters != &#39;\\\\N&#39;
+                        &#34;&#34;&#34;)
+
+
+def get_top_100_adult_movies_per_region(spark):    
+    &#34;&#34;&#34;Gets the top 100 regions with counted adult movies/series etc. per region, 
+    ordered from the region with the biggest count to the region with the smallest.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            title_akas.region, 
+                            COUNT(title_basics.tconst) AS total
+                        FROM 
+                            title_akas INNER JOIN title_basics 
+                                ON title_basics.tconst = title_akas.titleId
+                        WHERE 
+                            title_basics.isAdult = 1 
+                                AND title_akas.region != &#39;\\\\N&#39;
+                        GROUP BY 
+                            title_akas.region
+                        ORDER BY 
+                            total DESC
+                        LIMIT 100
+                        &#34;&#34;&#34;)
+
+
+def get_top_50_tvseries_by_episodes(spark):
+    &#34;&#34;&#34;Gets the top 50 TV Series with counted episodes per series,
+    ordered from the TV Series with the biggest quantity of episodes to the smallest.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            title_basics.primaryTitle, 
+                            COUNT(title_episode.tconst) as episodes
+                        FROM 
+                            title_basics INNER JOIN title_episode 
+                                ON title_basics.tconst = title_episode.parentTconst
+                        GROUP BY 
+                            title_basics.primaryTitle
+                        ORDER BY 
+                            episodes DESC
+                        LIMIT 50
+                        &#34;&#34;&#34;)
+
+
+def get_10_most_popular_titles_by_each_decade(spark):
+    &#34;&#34;&#34;Gets 10 titles of the most popular movies/series etc. by each decade.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # create the view of decades created from start years, titles, and ratings
+    decades_df = spark.sql(&#34;&#34;&#34;
+                        SELECT
+                            CONCAT(
+                                FLOOR(title_basics.startYear / 10) * 10, 
+                                &#39; - &#39;, 
+                                FLOOR(title_basics.startYear / 10) * 10 + 9
+                            ) as decade, 
+                            title_basics.primaryTitle, 
+                            title_ratings.averageRating
+                        FROM
+                            title_basics INNER JOIN title_ratings 
+                                ON title_basics.tconst = title_ratings.tconst
+                        &#34;&#34;&#34;)
+    decades_df.createOrReplaceTempView(&#34;decades_view&#34;)
+    
+    # partition 10 top titles by each decade
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT *
+                        FROM (
+                            SELECT 
+                                decade, 
+                                primaryTitle, 
+                                averageRating, 
+                                ROW_NUMBER() OVER (
+                                    PARTITION BY decade ORDER BY averageRating DESC
+                                ) AS row_num
+                            FROM 
+                                decades_view
+                        ) AS sub_query
+                        WHERE 
+                            row_num &lt;= 10
+                        ORDER BY 
+                            decade DESC, averageRating DESC
+                        &#34;&#34;&#34;)
+
+
+def get_10_most_popular_titles_by_each_genre(spark):
+    &#34;&#34;&#34;Gets 10 titles of the most popular movies/series etc. by each genre.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # create the view of genres exploded from string arrays, titles, and ratings
+    genres_df = spark.sql(&#34;&#34;&#34;
+                        SELECT
+                            POSEXPLODE(SPLIT(title_basics.genres, &#39;,&#39;)) AS (pos, genre), 
+                            title_basics.primaryTitle, 
+                            title_ratings.averageRating
+                        FROM
+                            title_basics INNER JOIN title_ratings  
+                                ON title_basics.tconst = title_ratings.tconst
+                        &#34;&#34;&#34;)
+    genres_df.createOrReplaceTempView(&#34;genres_view&#34;)
+    
+    # partition 10 top titles by each genre
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT *
+                        FROM (
+                            SELECT 
+                                genre, 
+                                primaryTitle, 
+                                averageRating, 
+                                ROW_NUMBER() OVER (
+                                    PARTITION BY genre ORDER BY averageRating DESC
+                                ) AS row_num
+                            FROM
+                                genres_view
+                            WHERE
+                                genre != &#39;\\\\N&#39;
+                        ) AS sub_query
+                        WHERE 
+                            row_num &lt;= 10
+                        ORDER BY 
+                            genre DESC, averageRating DESC
+                        &#34;&#34;&#34;)
+
+
+def main():
+    &#34;&#34;&#34;Extracts data from IMDB Datasets from the `imdb-data` folder, 
+    transforms data using declared functions, 
+    and loads results to .csv files in the `output/` folder.&#34;&#34;&#34;
+    
+    # Setup
+    data_sets = {
+        &#34;name_basics&#34;: &#34;name.basics.tsv.gz&#34;,
+        &#34;title_akas&#34;: &#34;title.akas.tsv.gz&#34;,
+        &#34;title_basics&#34;: &#34;title.basics.tsv.gz&#34;,
+        &#34;title_cew&#34;: &#34;title.crew.tsv.gz&#34;,
+        &#34;title_episode&#34;: &#34;title.episode.tsv.gz&#34;,
+        &#34;title_principals&#34;: &#34;title.principals.tsv.gz&#34;,
+        &#34;title_ratings&#34;: &#34;title.ratings.tsv.gz&#34;
+    }
+    
+    # relative paths to data inputs/outputs
+    input_folder = &#34;imdb-data/&#34;
+    output_folder = &#34;output/&#34;
+    
+    # how many records will be displayed to the console
+    top_rows = 10
+    
+    spark = SparkSession.builder.master(&#34;local[*]&#34;).appName(&#34;IMDB&#34;).getOrCreate()
+
+    # Extraction
+    for name, file in data_sets.items():
+        data_frame = spark.read.csv(input_folder + file, header=&#34;True&#34;, sep=&#34;\t&#34;)
+        data_frame.createOrReplaceTempView(name)
+        
+        print(f&#34;Dataset: {name}&#34;)
+        data_frame.printSchema()
+        data_frame.show(top_rows)
+    
+    # Transformation
+    tasks = []
+    
+    print(&#34;Task 1: All titles of series/movies etc. that are available in Ukrainian.&#34;)
+    ukrainian_series_movies_titles = get_ukrainian_series_movies_titles(spark)
+    ukrainian_series_movies_titles.show(top_rows)
+    tasks.append(ukrainian_series_movies_titles)
+    
+    print(&#34;Task 2: The list of people’s names, who were born in the 19th century.&#34;)
+    people_born_in_19th_century = get_people_born_in_19th_century(spark)
+    people_born_in_19th_century.show(top_rows)
+    tasks.append(people_born_in_19th_century)
+    
+    print(&#34;Task 3: Titles of all movies that last more than 2 hours.&#34;)
+    movies_last_more_2_hours = get_movies_last_more_2_hours(spark)
+    movies_last_more_2_hours.show(top_rows)
+    tasks.append(movies_last_more_2_hours)
+    
+    print(&#34;Task 4: Names of people, corresponding movies/series and characters they played in those films.&#34;)
+    people_and_characters_played = get_people_and_characters_played(spark)
+    people_and_characters_played.show(top_rows)
+    tasks.append(people_and_characters_played)
+    
+    print(&#34;Task 5: Top 100 regions with counted adult movies/series etc. in each.&#34;)
+    top_100_adult_movies_per_region = get_top_100_adult_movies_per_region(spark)
+    top_100_adult_movies_per_region.show(top_rows)
+    tasks.append(top_100_adult_movies_per_region)
+    
+    print(&#34;Task 6: Top 50 of TV Series with counted episodes in each.&#34;)
+    top_50_tvseries_by_episodes = get_top_50_tvseries_by_episodes(spark)
+    top_50_tvseries_by_episodes.show(top_rows)
+    tasks.append(top_50_tvseries_by_episodes)
+    
+    print(&#34;Task7: 10 titles of the most popular movies/series etc. by each decade.&#34;)
+    ten_most_popular_titles_by_each_decade = get_10_most_popular_titles_by_each_decade(spark)
+    ten_most_popular_titles_by_each_decade.show(top_rows)
+    tasks.append(ten_most_popular_titles_by_each_decade)
+    
+    print(&#34;Task 8: 10 titles of the most popular movies/series etc. by each genre.&#34;)
+    ten_most_popular_titles_by_each_genre = get_10_most_popular_titles_by_each_genre(spark)
+    ten_most_popular_titles_by_each_genre.show(top_rows)
+    tasks.append(ten_most_popular_titles_by_each_genre)
+    
+    # Loading
+    for task_num in range(0, len(tasks)):
+        # write results to task1, task2, ... taskN .csv files
+        tasks[task_num].write.format(&#34;csv&#34;).mode(&#34;overwrite&#34;).save(f&#34;{output_folder}task{task_num + 1}&#34;)
+
+
+if __name__ == &#34;__main__&#34;:
+    main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="imdb_spark.get_10_most_popular_titles_by_each_decade"><code class="name flex">
+<span>def <span class="ident">get_10_most_popular_titles_by_each_decade</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets 10 titles of the most popular movies/series etc. by each decade.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_10_most_popular_titles_by_each_decade(spark):
+    &#34;&#34;&#34;Gets 10 titles of the most popular movies/series etc. by each decade.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # create the view of decades created from start years, titles, and ratings
+    decades_df = spark.sql(&#34;&#34;&#34;
+                        SELECT
+                            CONCAT(
+                                FLOOR(title_basics.startYear / 10) * 10, 
+                                &#39; - &#39;, 
+                                FLOOR(title_basics.startYear / 10) * 10 + 9
+                            ) as decade, 
+                            title_basics.primaryTitle, 
+                            title_ratings.averageRating
+                        FROM
+                            title_basics INNER JOIN title_ratings 
+                                ON title_basics.tconst = title_ratings.tconst
+                        &#34;&#34;&#34;)
+    decades_df.createOrReplaceTempView(&#34;decades_view&#34;)
+    
+    # partition 10 top titles by each decade
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT *
+                        FROM (
+                            SELECT 
+                                decade, 
+                                primaryTitle, 
+                                averageRating, 
+                                ROW_NUMBER() OVER (
+                                    PARTITION BY decade ORDER BY averageRating DESC
+                                ) AS row_num
+                            FROM 
+                                decades_view
+                        ) AS sub_query
+                        WHERE 
+                            row_num &lt;= 10
+                        ORDER BY 
+                            decade DESC, averageRating DESC
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.get_10_most_popular_titles_by_each_genre"><code class="name flex">
+<span>def <span class="ident">get_10_most_popular_titles_by_each_genre</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets 10 titles of the most popular movies/series etc. by each genre.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_10_most_popular_titles_by_each_genre(spark):
+    &#34;&#34;&#34;Gets 10 titles of the most popular movies/series etc. by each genre.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # create the view of genres exploded from string arrays, titles, and ratings
+    genres_df = spark.sql(&#34;&#34;&#34;
+                        SELECT
+                            POSEXPLODE(SPLIT(title_basics.genres, &#39;,&#39;)) AS (pos, genre), 
+                            title_basics.primaryTitle, 
+                            title_ratings.averageRating
+                        FROM
+                            title_basics INNER JOIN title_ratings  
+                                ON title_basics.tconst = title_ratings.tconst
+                        &#34;&#34;&#34;)
+    genres_df.createOrReplaceTempView(&#34;genres_view&#34;)
+    
+    # partition 10 top titles by each genre
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT *
+                        FROM (
+                            SELECT 
+                                genre, 
+                                primaryTitle, 
+                                averageRating, 
+                                ROW_NUMBER() OVER (
+                                    PARTITION BY genre ORDER BY averageRating DESC
+                                ) AS row_num
+                            FROM
+                                genres_view
+                            WHERE
+                                genre != &#39;\\\\N&#39;
+                        ) AS sub_query
+                        WHERE 
+                            row_num &lt;= 10
+                        ORDER BY 
+                            genre DESC, averageRating DESC
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.get_movies_last_more_2_hours"><code class="name flex">
+<span>def <span class="ident">get_movies_last_more_2_hours</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets titles of all movies that last more than 2 hours.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_movies_last_more_2_hours(spark):
+    &#34;&#34;&#34;Gets titles of all movies that last more than 2 hours.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            primaryTitle
+                        FROM 
+                            title_basics
+                        WHERE 
+                            titleType = &#39;movie&#39; AND runtimeMinutes &gt; 120
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.get_people_and_characters_played"><code class="name flex">
+<span>def <span class="ident">get_people_and_characters_played</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets names of people, corresponding movies/series and characters they played in those films.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_people_and_characters_played(spark):
+    &#34;&#34;&#34;Gets names of people, corresponding movies/series and characters they played in those films.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            name_basics.primaryName, 
+                            title_basics.primaryTitle,
+                            title_principals.characters
+                        FROM 
+                            (title_basics INNER JOIN title_principals 
+                                ON title_basics.tconst = title_principals.tconst) 
+                            INNER JOIN name_basics 
+                                ON name_basics.nconst = title_principals.nconst
+                        WHERE 
+                            title_principals.category IN (&#39;actor&#39;, &#39;actress&#39;) 
+                                AND title_principals.characters != &#39;\\\\N&#39;
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.get_people_born_in_19th_century"><code class="name flex">
+<span>def <span class="ident">get_people_born_in_19th_century</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the list of people’s names, who were born in the 19th century.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_people_born_in_19th_century(spark):
+    &#34;&#34;&#34;Gets the list of people’s names, who were born in the 19th century.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            primaryName
+                        FROM 
+                            name_basics
+                        WHERE 
+                            birthYear &gt;= 1801 AND birthYear &lt;= 1900
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.get_top_100_adult_movies_per_region"><code class="name flex">
+<span>def <span class="ident">get_top_100_adult_movies_per_region</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the top 100 regions with counted adult movies/series etc. per region,
+ordered from the region with the biggest count to the region with the smallest.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_top_100_adult_movies_per_region(spark):    
+    &#34;&#34;&#34;Gets the top 100 regions with counted adult movies/series etc. per region, 
+    ordered from the region with the biggest count to the region with the smallest.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            title_akas.region, 
+                            COUNT(title_basics.tconst) AS total
+                        FROM 
+                            title_akas INNER JOIN title_basics 
+                                ON title_basics.tconst = title_akas.titleId
+                        WHERE 
+                            title_basics.isAdult = 1 
+                                AND title_akas.region != &#39;\\\\N&#39;
+                        GROUP BY 
+                            title_akas.region
+                        ORDER BY 
+                            total DESC
+                        LIMIT 100
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.get_top_50_tvseries_by_episodes"><code class="name flex">
+<span>def <span class="ident">get_top_50_tvseries_by_episodes</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the top 50 TV Series with counted episodes per series,
+ordered from the TV Series with the biggest quantity of episodes to the smallest.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_top_50_tvseries_by_episodes(spark):
+    &#34;&#34;&#34;Gets the top 50 TV Series with counted episodes per series,
+    ordered from the TV Series with the biggest quantity of episodes to the smallest.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            title_basics.primaryTitle, 
+                            COUNT(title_episode.tconst) as episodes
+                        FROM 
+                            title_basics INNER JOIN title_episode 
+                                ON title_basics.tconst = title_episode.parentTconst
+                        GROUP BY 
+                            title_basics.primaryTitle
+                        ORDER BY 
+                            episodes DESC
+                        LIMIT 50
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.get_ukrainian_series_movies_titles"><code class="name flex">
+<span>def <span class="ident">get_ukrainian_series_movies_titles</span></span>(<span>spark)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets all titles of series/movies etc. that are available in Ukrainian.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>spark</code></strong> :&ensp;<code>SparkSession</code></dt>
+<dd>The entry point for DataFrame and SQL functionality</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_ukrainian_series_movies_titles(spark):
+    &#34;&#34;&#34;Gets all titles of series/movies etc. that are available in Ukrainian.
+
+    Parameters
+    ----------
+    spark : SparkSession
+        The entry point for DataFrame and SQL functionality
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    return spark.sql(&#34;&#34;&#34;
+                        SELECT 
+                            DISTINCT title
+                        FROM 
+                            title_akas
+                        WHERE 
+                            region = &#39;UA&#39;
+                        &#34;&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extracts data from IMDB Datasets from the <code>imdb-data</code> folder,
+transforms data using declared functions,
+and loads results to .csv files in the <code>output/</code> folder.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+    &#34;&#34;&#34;Extracts data from IMDB Datasets from the `imdb-data` folder, 
+    transforms data using declared functions, 
+    and loads results to .csv files in the `output/` folder.&#34;&#34;&#34;
+    
+    # Setup
+    data_sets = {
+        &#34;name_basics&#34;: &#34;name.basics.tsv.gz&#34;,
+        &#34;title_akas&#34;: &#34;title.akas.tsv.gz&#34;,
+        &#34;title_basics&#34;: &#34;title.basics.tsv.gz&#34;,
+        &#34;title_cew&#34;: &#34;title.crew.tsv.gz&#34;,
+        &#34;title_episode&#34;: &#34;title.episode.tsv.gz&#34;,
+        &#34;title_principals&#34;: &#34;title.principals.tsv.gz&#34;,
+        &#34;title_ratings&#34;: &#34;title.ratings.tsv.gz&#34;
+    }
+    
+    # relative paths to data inputs/outputs
+    input_folder = &#34;imdb-data/&#34;
+    output_folder = &#34;output/&#34;
+    
+    # how many records will be displayed to the console
+    top_rows = 10
+    
+    spark = SparkSession.builder.master(&#34;local[*]&#34;).appName(&#34;IMDB&#34;).getOrCreate()
+
+    # Extraction
+    for name, file in data_sets.items():
+        data_frame = spark.read.csv(input_folder + file, header=&#34;True&#34;, sep=&#34;\t&#34;)
+        data_frame.createOrReplaceTempView(name)
+        
+        print(f&#34;Dataset: {name}&#34;)
+        data_frame.printSchema()
+        data_frame.show(top_rows)
+    
+    # Transformation
+    tasks = []
+    
+    print(&#34;Task 1: All titles of series/movies etc. that are available in Ukrainian.&#34;)
+    ukrainian_series_movies_titles = get_ukrainian_series_movies_titles(spark)
+    ukrainian_series_movies_titles.show(top_rows)
+    tasks.append(ukrainian_series_movies_titles)
+    
+    print(&#34;Task 2: The list of people’s names, who were born in the 19th century.&#34;)
+    people_born_in_19th_century = get_people_born_in_19th_century(spark)
+    people_born_in_19th_century.show(top_rows)
+    tasks.append(people_born_in_19th_century)
+    
+    print(&#34;Task 3: Titles of all movies that last more than 2 hours.&#34;)
+    movies_last_more_2_hours = get_movies_last_more_2_hours(spark)
+    movies_last_more_2_hours.show(top_rows)
+    tasks.append(movies_last_more_2_hours)
+    
+    print(&#34;Task 4: Names of people, corresponding movies/series and characters they played in those films.&#34;)
+    people_and_characters_played = get_people_and_characters_played(spark)
+    people_and_characters_played.show(top_rows)
+    tasks.append(people_and_characters_played)
+    
+    print(&#34;Task 5: Top 100 regions with counted adult movies/series etc. in each.&#34;)
+    top_100_adult_movies_per_region = get_top_100_adult_movies_per_region(spark)
+    top_100_adult_movies_per_region.show(top_rows)
+    tasks.append(top_100_adult_movies_per_region)
+    
+    print(&#34;Task 6: Top 50 of TV Series with counted episodes in each.&#34;)
+    top_50_tvseries_by_episodes = get_top_50_tvseries_by_episodes(spark)
+    top_50_tvseries_by_episodes.show(top_rows)
+    tasks.append(top_50_tvseries_by_episodes)
+    
+    print(&#34;Task7: 10 titles of the most popular movies/series etc. by each decade.&#34;)
+    ten_most_popular_titles_by_each_decade = get_10_most_popular_titles_by_each_decade(spark)
+    ten_most_popular_titles_by_each_decade.show(top_rows)
+    tasks.append(ten_most_popular_titles_by_each_decade)
+    
+    print(&#34;Task 8: 10 titles of the most popular movies/series etc. by each genre.&#34;)
+    ten_most_popular_titles_by_each_genre = get_10_most_popular_titles_by_each_genre(spark)
+    ten_most_popular_titles_by_each_genre.show(top_rows)
+    tasks.append(ten_most_popular_titles_by_each_genre)
+    
+    # Loading
+    for task_num in range(0, len(tasks)):
+        # write results to task1, task2, ... taskN .csv files
+        tasks[task_num].write.format(&#34;csv&#34;).mode(&#34;overwrite&#34;).save(f&#34;{output_folder}task{task_num + 1}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="imdb_spark.get_10_most_popular_titles_by_each_decade" href="#imdb_spark.get_10_most_popular_titles_by_each_decade">get_10_most_popular_titles_by_each_decade</a></code></li>
+<li><code><a title="imdb_spark.get_10_most_popular_titles_by_each_genre" href="#imdb_spark.get_10_most_popular_titles_by_each_genre">get_10_most_popular_titles_by_each_genre</a></code></li>
+<li><code><a title="imdb_spark.get_movies_last_more_2_hours" href="#imdb_spark.get_movies_last_more_2_hours">get_movies_last_more_2_hours</a></code></li>
+<li><code><a title="imdb_spark.get_people_and_characters_played" href="#imdb_spark.get_people_and_characters_played">get_people_and_characters_played</a></code></li>
+<li><code><a title="imdb_spark.get_people_born_in_19th_century" href="#imdb_spark.get_people_born_in_19th_century">get_people_born_in_19th_century</a></code></li>
+<li><code><a title="imdb_spark.get_top_100_adult_movies_per_region" href="#imdb_spark.get_top_100_adult_movies_per_region">get_top_100_adult_movies_per_region</a></code></li>
+<li><code><a title="imdb_spark.get_top_50_tvseries_by_episodes" href="#imdb_spark.get_top_50_tvseries_by_episodes">get_top_50_tvseries_by_episodes</a></code></li>
+<li><code><a title="imdb_spark.get_ukrainian_series_movies_titles" href="#imdb_spark.get_ukrainian_series_movies_titles">get_ukrainian_series_movies_titles</a></code></li>
+<li><code><a title="imdb_spark.main" href="#imdb_spark.main">main</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

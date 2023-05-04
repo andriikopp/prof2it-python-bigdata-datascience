@@ -3,7 +3,7 @@
 This script allows the user to load IMDB Datasets, print top 10 rows
 from each dataset, execute necessary transformations implemented by
 separate functions, and store obtained results to `.csv` files (one per
-transformation).
+transformation) to the `output` folder.
 
 This tool accepts `.gz` files of IMDB Datasets (https://datasets.imdbws.com/)
 located in the local folder `imdb-data/`.
@@ -12,8 +12,9 @@ This script requires that `pyspark` package is installed within the Python
 environment you are running this script in (with JDK and PATH variables set
 in your environment).
 
-This file is possible to be used as a module and contains the following
+This file is possible to be used as a module and it contains the following
 functions:
+
     * get_ukrainian_series_movies_titles - returns all titles of series/movies etc. 
         that are available in Ukrainian
     * get_people_born_in_19th_century - returns the list of people’s names, 
