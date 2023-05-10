@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>imdb_spark_functions API documentation</title>
+<meta name="description" content="IMDB Spark Project …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>imdb_spark_functions</code></h1>
+</header>
+<section id="section-intro">
+<p>IMDB Spark Project</p>
+<p>This script allows the user to load IMDB Datasets, print top 10 rows
+from each dataset, execute necessary transformations implemented by
+separate functions, and store obtained results to <code>.csv</code> files (one per
+transformation) to the <code>output2</code> folder.</p>
+<p>This tool accepts <code>.gz</code> files of IMDB Datasets (<a href="https://datasets.imdbws.com/">https://datasets.imdbws.com/</a>)
+located in the local folder <code>imdb-data/</code>.</p>
+<p>This script requires that <code>pyspark</code> package is installed within the Python
+environment you are running this script in (with JDK and PATH variables set
+in your environment).</p>
+<p>REMARK! This version completes only tasks 2, 4, and 7 as told by mentor
+to fulfil training requirements.
+Due to this naming out output folders is a little bit confusing:
+e.g. task1 = task 2, task2 = task 4, and task3 = task 7 xD</p>
+<p>This file is possible to be used as a module and it contains the following
+functions:</p>
+<pre><code>* get_people_born_in_19th_century - returns the list of people’s names, 
+    who were born in the 19th century
+* get_people_and_characters_played - returns  names of people, corresponding 
+    movies/series and characters they played in those films
+* get_10_most_popular_titles_by_each_decade - returns 10 titles of the most 
+    popular movies/series etc. by each decade
+* main - the main function of the script
+</code></pre>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;IMDB Spark Project
+
+This script allows the user to load IMDB Datasets, print top 10 rows
+from each dataset, execute necessary transformations implemented by
+separate functions, and store obtained results to `.csv` files (one per
+transformation) to the `output2` folder.
+
+This tool accepts `.gz` files of IMDB Datasets (https://datasets.imdbws.com/)
+located in the local folder `imdb-data/`.
+
+This script requires that `pyspark` package is installed within the Python
+environment you are running this script in (with JDK and PATH variables set
+in your environment).
+
+REMARK! This version completes only tasks 2, 4, and 7 as told by mentor 
+to fulfil training requirements.
+Due to this naming out output folders is a little bit confusing:
+e.g. task1 = task 2, task2 = task 4, and task3 = task 7 xD
+
+This file is possible to be used as a module and it contains the following
+functions:
+
+    * get_people_born_in_19th_century - returns the list of people’s names, 
+        who were born in the 19th century
+    * get_people_and_characters_played - returns  names of people, corresponding 
+        movies/series and characters they played in those films
+    * get_10_most_popular_titles_by_each_decade - returns 10 titles of the most 
+        popular movies/series etc. by each decade
+    * main - the main function of the script
+&#34;&#34;&#34;
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, concat_ws, floor, row_number
+from pyspark.sql.window import Window
+
+
+def get_people_born_in_19th_century(name_basics):
+    &#34;&#34;&#34;Gets the list of people’s names, who were born in the 19th century.
+
+    Parameters
+    ----------
+    name_basics : DataFrame
+        The DataFrame representing the name_basics table
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # select names and filter by birth year
+    return name_basics.select(&#34;primaryName&#34;).where(col(&#34;birthYear&#34;).between(1801, 1900))
+
+
+def get_people_and_characters_played(title_basics, title_principals, name_basics):
+    &#34;&#34;&#34;Gets names of people, corresponding movies/series and characters they played in those films.
+
+    Parameters
+    ----------
+    title_basics : DataFrame
+        The DataFrame representing the title_basics table
+    title_principals : DataFrame
+        The DataFrame representing the title_principals table
+    name_basics : DataFrame
+        The DataFrame representing the name_basics table
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # join title_basics and title_principals data frames
+    titles_joined = title_basics.join(title_principals, &#34;tconst&#34;)
+    
+    # join previous join result and name_basics
+    titles_names_joined = titles_joined.join(name_basics, &#34;nconst&#34;)
+    
+    # select columns, filter categories and characters
+    return titles_names_joined.select(&#34;primaryName&#34;, 
+                                      &#34;primaryTitle&#34;, 
+                                      &#34;characters&#34;) \
+        .where(col(&#34;category&#34;).isin(&#34;actor&#34;, &#34;actress&#34;) 
+               &amp; (col(&#34;characters&#34;) != &#39;\\N&#39;))
+
+
+def get_10_most_popular_titles_by_each_decade(title_basics, title_ratings):
+    &#34;&#34;&#34;Gets 10 titles of the most popular movies/series etc. by each decade.
+
+    Parameters
+    ----------
+    title_basics : DataFrame
+        The DataFrame representing the title_basics table
+    title_ratings : DataFrame
+        The DataFrame representing the title_ratings table
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # join title_basics and title_ratings
+    titles_joined = title_basics.join(title_ratings, &#34;tconst&#34;)
+    
+    # construct decade ranges in the format YYYY - YYYY
+    decade_range = concat_ws(
+        &#34; - &#34;,
+        floor(titles_joined[&#34;startYear&#34;] / 10) * 10,
+        floor(titles_joined[&#34;startYear&#34;] / 10) * 10 + 9
+    )
+    
+    # data frame of decades created using start years, titles, and ratings
+    decades_df = titles_joined.select(decade_range.alias(&#34;decade&#34;), 
+                                      &#34;primaryTitle&#34;, 
+                                      &#34;averageRating&#34;)
+    
+    # partition by decades, descending order by rating
+    decade_partition = Window.partitionBy(&#34;decade&#34;).orderBy(col(&#34;averageRating&#34;).desc())
+    
+    # apply partition to find row numbers
+    # additionally filter empty string decades
+    ranked_decades_view = decades_df.select(
+        &#34;decade&#34;, 
+        &#34;primaryTitle&#34;, 
+        &#34;averageRating&#34;, 
+        row_number().over(decade_partition).alias(&#34;row_num&#34;)
+    ).where(col(&#34;decade&#34;) != &#34;&#34;)
+    
+    # limit partitions to 10 rows
+    top_10_by_decade = ranked_decades_view.where(col(&#34;row_num&#34;) &lt;= 10)
+    
+    # descending order by decades and ratings within partitions
+    return top_10_by_decade.orderBy(col(&#34;decade&#34;).desc(), col(&#34;averageRating&#34;).desc())
+
+
+def main():
+    &#34;&#34;&#34;Extracts data from IMDB Datasets from the `imdb-data` folder, 
+    transforms data using declared functions, 
+    and loads results to .csv files in the `output2/` folder.&#34;&#34;&#34;
+    
+    # Setup
+    # ! used only data sets for tasks 2, 4, and 7 to fulfil training requirements
+    data_sets = {
+        &#34;name_basics&#34;: {&#34;file&#34;: &#34;name.basics.tsv.gz&#34;, &#34;data&#34;: None},
+        &#34;title_basics&#34;: {&#34;file&#34;: &#34;title.basics.tsv.gz&#34;, &#34;data&#34;: None},
+        &#34;title_principals&#34;: {&#34;file&#34;: &#34;title.principals.tsv.gz&#34;, &#34;data&#34;: None},
+        &#34;title_ratings&#34;: {&#34;file&#34;: &#34;title.ratings.tsv.gz&#34;, &#34;data&#34;: None}
+    }
+    
+    # relative paths to data inputs/outputs
+    input_folder = &#34;imdb-data/&#34;
+    output_folder = &#34;output2/&#34;
+    
+    # how many records will be displayed to the console
+    top_rows = 10
+    
+    spark = SparkSession.builder.master(&#34;local[*]&#34;).appName(&#34;IMDB&#34;).getOrCreate()
+
+    # Extraction
+    for data_set_name in data_sets:
+        data_frame = spark.read.csv(input_folder + data_sets[data_set_name][&#34;file&#34;], header=&#34;True&#34;, sep=&#34;\t&#34;)
+        data_sets[data_set_name][&#34;data&#34;] = data_frame
+        
+        print(f&#34;Dataset: {data_set_name}&#34;)
+        data_frame.printSchema()
+        data_frame.show(top_rows)
+    
+    # Transformation
+    tasks = []
+    
+    print(&#34;Task 2: The list of people’s names, who were born in the 19th century.&#34;)
+    people_born_in_19th_century = get_people_born_in_19th_century(data_sets[&#34;name_basics&#34;][&#34;data&#34;])
+    people_born_in_19th_century.show(top_rows)
+    tasks.append(people_born_in_19th_century)
+    
+    print(&#34;Task 4: Names of people, corresponding movies/series and characters they played in those films.&#34;)
+    people_and_characters_played = get_people_and_characters_played(data_sets[&#34;title_basics&#34;][&#34;data&#34;],
+                                                                    data_sets[&#34;title_principals&#34;][&#34;data&#34;],
+                                                                    data_sets[&#34;name_basics&#34;][&#34;data&#34;])
+    people_and_characters_played.show(top_rows)
+    tasks.append(people_and_characters_played)
+    
+    print(&#34;Task7: 10 titles of the most popular movies/series etc. by each decade.&#34;)
+    ten_most_popular_titles_by_each_decade = get_10_most_popular_titles_by_each_decade(data_sets[&#34;title_basics&#34;][&#34;data&#34;],
+                                                                                       data_sets[&#34;title_ratings&#34;][&#34;data&#34;])
+    ten_most_popular_titles_by_each_decade.show(top_rows)
+    tasks.append(ten_most_popular_titles_by_each_decade)
+    
+    # Loading
+    for task_num in range(0, len(tasks)):
+        # write results to task1, task2, ... taskN .csv files
+        tasks[task_num].write.format(&#34;csv&#34;).mode(&#34;overwrite&#34;).save(f&#34;{output_folder}task{task_num + 1}&#34;)
+
+
+if __name__ == &#34;__main__&#34;:
+    main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="imdb_spark_functions.get_10_most_popular_titles_by_each_decade"><code class="name flex">
+<span>def <span class="ident">get_10_most_popular_titles_by_each_decade</span></span>(<span>title_basics, title_ratings)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets 10 titles of the most popular movies/series etc. by each decade.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>title_basics</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>The DataFrame representing the title_basics table</dd>
+<dt><strong><code>title_ratings</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>The DataFrame representing the title_ratings table</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_10_most_popular_titles_by_each_decade(title_basics, title_ratings):
+    &#34;&#34;&#34;Gets 10 titles of the most popular movies/series etc. by each decade.
+
+    Parameters
+    ----------
+    title_basics : DataFrame
+        The DataFrame representing the title_basics table
+    title_ratings : DataFrame
+        The DataFrame representing the title_ratings table
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # join title_basics and title_ratings
+    titles_joined = title_basics.join(title_ratings, &#34;tconst&#34;)
+    
+    # construct decade ranges in the format YYYY - YYYY
+    decade_range = concat_ws(
+        &#34; - &#34;,
+        floor(titles_joined[&#34;startYear&#34;] / 10) * 10,
+        floor(titles_joined[&#34;startYear&#34;] / 10) * 10 + 9
+    )
+    
+    # data frame of decades created using start years, titles, and ratings
+    decades_df = titles_joined.select(decade_range.alias(&#34;decade&#34;), 
+                                      &#34;primaryTitle&#34;, 
+                                      &#34;averageRating&#34;)
+    
+    # partition by decades, descending order by rating
+    decade_partition = Window.partitionBy(&#34;decade&#34;).orderBy(col(&#34;averageRating&#34;).desc())
+    
+    # apply partition to find row numbers
+    # additionally filter empty string decades
+    ranked_decades_view = decades_df.select(
+        &#34;decade&#34;, 
+        &#34;primaryTitle&#34;, 
+        &#34;averageRating&#34;, 
+        row_number().over(decade_partition).alias(&#34;row_num&#34;)
+    ).where(col(&#34;decade&#34;) != &#34;&#34;)
+    
+    # limit partitions to 10 rows
+    top_10_by_decade = ranked_decades_view.where(col(&#34;row_num&#34;) &lt;= 10)
+    
+    # descending order by decades and ratings within partitions
+    return top_10_by_decade.orderBy(col(&#34;decade&#34;).desc(), col(&#34;averageRating&#34;).desc())</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark_functions.get_people_and_characters_played"><code class="name flex">
+<span>def <span class="ident">get_people_and_characters_played</span></span>(<span>title_basics, title_principals, name_basics)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets names of people, corresponding movies/series and characters they played in those films.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>title_basics</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>The DataFrame representing the title_basics table</dd>
+<dt><strong><code>title_principals</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>The DataFrame representing the title_principals table</dd>
+<dt><strong><code>name_basics</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>The DataFrame representing the name_basics table</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_people_and_characters_played(title_basics, title_principals, name_basics):
+    &#34;&#34;&#34;Gets names of people, corresponding movies/series and characters they played in those films.
+
+    Parameters
+    ----------
+    title_basics : DataFrame
+        The DataFrame representing the title_basics table
+    title_principals : DataFrame
+        The DataFrame representing the title_principals table
+    name_basics : DataFrame
+        The DataFrame representing the name_basics table
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # join title_basics and title_principals data frames
+    titles_joined = title_basics.join(title_principals, &#34;tconst&#34;)
+    
+    # join previous join result and name_basics
+    titles_names_joined = titles_joined.join(name_basics, &#34;nconst&#34;)
+    
+    # select columns, filter categories and characters
+    return titles_names_joined.select(&#34;primaryName&#34;, 
+                                      &#34;primaryTitle&#34;, 
+                                      &#34;characters&#34;) \
+        .where(col(&#34;category&#34;).isin(&#34;actor&#34;, &#34;actress&#34;) 
+               &amp; (col(&#34;characters&#34;) != &#39;\\N&#39;))</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark_functions.get_people_born_in_19th_century"><code class="name flex">
+<span>def <span class="ident">get_people_born_in_19th_century</span></span>(<span>name_basics)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the list of people’s names, who were born in the 19th century.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name_basics</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>The DataFrame representing the name_basics table</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>DataFrame</code></dt>
+<dd>a data frame representing the query result</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_people_born_in_19th_century(name_basics):
+    &#34;&#34;&#34;Gets the list of people’s names, who were born in the 19th century.
+
+    Parameters
+    ----------
+    name_basics : DataFrame
+        The DataFrame representing the name_basics table
+
+    Returns
+    -------
+    DataFrame
+        a data frame representing the query result
+    &#34;&#34;&#34;
+    
+    # select names and filter by birth year
+    return name_basics.select(&#34;primaryName&#34;).where(col(&#34;birthYear&#34;).between(1801, 1900))</code></pre>
+</details>
+</dd>
+<dt id="imdb_spark_functions.main"><code class="name flex">
+<span>def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extracts data from IMDB Datasets from the <code>imdb-data</code> folder,
+transforms data using declared functions,
+and loads results to .csv files in the <code>output2/</code> folder.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def main():
+    &#34;&#34;&#34;Extracts data from IMDB Datasets from the `imdb-data` folder, 
+    transforms data using declared functions, 
+    and loads results to .csv files in the `output2/` folder.&#34;&#34;&#34;
+    
+    # Setup
+    # ! used only data sets for tasks 2, 4, and 7 to fulfil training requirements
+    data_sets = {
+        &#34;name_basics&#34;: {&#34;file&#34;: &#34;name.basics.tsv.gz&#34;, &#34;data&#34;: None},
+        &#34;title_basics&#34;: {&#34;file&#34;: &#34;title.basics.tsv.gz&#34;, &#34;data&#34;: None},
+        &#34;title_principals&#34;: {&#34;file&#34;: &#34;title.principals.tsv.gz&#34;, &#34;data&#34;: None},
+        &#34;title_ratings&#34;: {&#34;file&#34;: &#34;title.ratings.tsv.gz&#34;, &#34;data&#34;: None}
+    }
+    
+    # relative paths to data inputs/outputs
+    input_folder = &#34;imdb-data/&#34;
+    output_folder = &#34;output2/&#34;
+    
+    # how many records will be displayed to the console
+    top_rows = 10
+    
+    spark = SparkSession.builder.master(&#34;local[*]&#34;).appName(&#34;IMDB&#34;).getOrCreate()
+
+    # Extraction
+    for data_set_name in data_sets:
+        data_frame = spark.read.csv(input_folder + data_sets[data_set_name][&#34;file&#34;], header=&#34;True&#34;, sep=&#34;\t&#34;)
+        data_sets[data_set_name][&#34;data&#34;] = data_frame
+        
+        print(f&#34;Dataset: {data_set_name}&#34;)
+        data_frame.printSchema()
+        data_frame.show(top_rows)
+    
+    # Transformation
+    tasks = []
+    
+    print(&#34;Task 2: The list of people’s names, who were born in the 19th century.&#34;)
+    people_born_in_19th_century = get_people_born_in_19th_century(data_sets[&#34;name_basics&#34;][&#34;data&#34;])
+    people_born_in_19th_century.show(top_rows)
+    tasks.append(people_born_in_19th_century)
+    
+    print(&#34;Task 4: Names of people, corresponding movies/series and characters they played in those films.&#34;)
+    people_and_characters_played = get_people_and_characters_played(data_sets[&#34;title_basics&#34;][&#34;data&#34;],
+                                                                    data_sets[&#34;title_principals&#34;][&#34;data&#34;],
+                                                                    data_sets[&#34;name_basics&#34;][&#34;data&#34;])
+    people_and_characters_played.show(top_rows)
+    tasks.append(people_and_characters_played)
+    
+    print(&#34;Task7: 10 titles of the most popular movies/series etc. by each decade.&#34;)
+    ten_most_popular_titles_by_each_decade = get_10_most_popular_titles_by_each_decade(data_sets[&#34;title_basics&#34;][&#34;data&#34;],
+                                                                                       data_sets[&#34;title_ratings&#34;][&#34;data&#34;])
+    ten_most_popular_titles_by_each_decade.show(top_rows)
+    tasks.append(ten_most_popular_titles_by_each_decade)
+    
+    # Loading
+    for task_num in range(0, len(tasks)):
+        # write results to task1, task2, ... taskN .csv files
+        tasks[task_num].write.format(&#34;csv&#34;).mode(&#34;overwrite&#34;).save(f&#34;{output_folder}task{task_num + 1}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="imdb_spark_functions.get_10_most_popular_titles_by_each_decade" href="#imdb_spark_functions.get_10_most_popular_titles_by_each_decade">get_10_most_popular_titles_by_each_decade</a></code></li>
+<li><code><a title="imdb_spark_functions.get_people_and_characters_played" href="#imdb_spark_functions.get_people_and_characters_played">get_people_and_characters_played</a></code></li>
+<li><code><a title="imdb_spark_functions.get_people_born_in_19th_century" href="#imdb_spark_functions.get_people_born_in_19th_century">get_people_born_in_19th_century</a></code></li>
+<li><code><a title="imdb_spark_functions.main" href="#imdb_spark_functions.main">main</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
