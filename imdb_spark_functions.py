@@ -89,8 +89,10 @@ def get_10_most_popular_titles_by_each_decade(title_basics, title_ratings):
 
     Parameters
     ----------
-    spark : SparkSession
-        The entry point for DataFrame and SQL functionality
+    title_basics : DataFrame
+        The DataFrame representing the title_basics table
+    title_ratings : DataFrame
+        The DataFrame representing the title_ratings table
 
     Returns
     -------
